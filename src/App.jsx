@@ -1,68 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-function Navbar(){
-  return(
-    <div className='Navbar'>
-      <h1>The Recipie Stash</h1>
-     
-    <p>This is the navbar</p>
-    </div>
-  )
-}
-function Searchbar(){
-  const [filtertext, setfiltertext] = useState('');
-  const handleChange = (e) => {
-    e.preventDefault();
-    setfiltertext(e.target.value);
-  };
-  
-  if (searchInput.length > 0) {
-      recipies.filter((recipie) => {
-      return recipie.name.match(filtertext);
-  });
-  }
-  return(<>
-  <input placeholder="Search here" 
-  value={filtertext}
-   onChange ={handleChange}></input>
-   </>)
-}
-function Footer(){
-  return (<>
-  <p>This is the footer</p></>)
-}
-function Main({recipies}){
-  const List= recipies.map(recipie=>
-    <div className='Recipie-List' id={recipie.id}>
-    <h3>{recipie.name}</h3>
-    <p>{recipie.procedure}</p>
-    </div>
-    )
-  return(<>
-  <p>This is the main page haha</p>
-  <p>{List}</p>
-  
-  
-  </>)
-}
+
+import './App.css'; 
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+import MainContent from "./MainContent";
+
 function App() {
- 
+  const recipes = [
+    {
+      id: 0,
+      name: "Omelet",
+      procedure:
+        "The procedure to make omelet is as follows.Begin the day with a fluffy omelet filled with your favorite things. From soft French-inspired eggs to a classic Denver omelet loaded with meat and cheese, our collection of easy omelet recipes covers it all. Pull out your pan and serve up delightfully savory omelets that will make your morning (or any time of day) more delicious.",
+    },
+    {
+      id: 1,
+      name: "Maggi",
+      procedure: "The procedure to make Maggi is as follows.The preparation of MAGGI® Noodles starts with mixing of flour, water etc. in a mixer to produce the dough. The dough, then goes through a series of rollers to form a thin sheet, which is then artfully cut into fine noodle strands. These strands are then waved, folded and cooked to form the final noodle cake.",
+    },
+  ];
+
   
   return (
     <>
-    <Navbar />
-    <Searchbar />
-   <Main recipies={recipies}/>
-   
-   <Footer />
+      <Navbar></Navbar>
+     
+      <MainContent recipes={recipes} />
+      <Footer />
     </>
-  )
+  );
 }
-const recipies=[  { id: 0, name:'Omelet', procedure:'fhfdiffjddjdfdshkskdkjdksndkjdfbvv....' },
-{ id:1,name:'maggi',procedure:'the procedure to make maggi is as follows'}]
-    
-  ;
 
-export default App
+export default App;
