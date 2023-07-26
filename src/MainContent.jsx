@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 function SearchBar({ onSearch }) {
   const [searchInput, setSearchInput] = useState('');
 
@@ -10,6 +12,7 @@ function SearchBar({ onSearch }) {
 
   return (
     <div>
+      <p>Find Your Recipie!!</p>
       <input
         className='input'
         type='text'
@@ -38,8 +41,10 @@ function MainContent({ recipes }) {
   ));
   return (
     <>
+      <Navbar />
       <SearchBar onSearch={handleSearch} />
       {RecipeList}
+      <Footer />
     </>
   );
 }

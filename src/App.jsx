@@ -1,9 +1,11 @@
-
+import React from 'react';
 import './App.css'; 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import Submit from "./Submit";
+import {BrowserRouter as Router,Route, Routes, BrowserRouter} from 'react-router-dom';
 import MainContent from "./MainContent";
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   const recipes = [
@@ -22,12 +24,19 @@ function App() {
 
   
   return (
-    <>
-      <Navbar></Navbar>
+    <Router>
+    <div className='nav-links'>
+    
      
-      <MainContent recipes={recipes} />
-      <Footer />
-    </>
+    <Switch>
+            <Route path = "/">
+                <MainContent />
+            </Route>
+     
+            </Switch>
+      </div>
+ 
+ </Router>
   );
 }
 
